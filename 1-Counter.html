@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+
+<body>
+    <div>
+        <h1>Counter App</h1>
+    </div>
+    <div>
+        <span>
+            <button id="decreaseBtn">-</button>
+            <p id="countDisplay">Count goes here!</p>
+            <button id="increaseBtn">+</button>
+        </span>
+    </div>
+    <script>
+        console.log("Hello world, this is working!")
+
+        let count = 0;
+
+        const decreaseBtn = document.querySelector("#decreaseBtn");
+        const increaseBtn = document.querySelector("#increaseBtn");
+        const countDisplay = document.querySelector("#countDisplay");
+
+        function render() {
+            countDisplay.innerHTML = count;
+        };
+
+        decreaseBtn.addEventListener("click", e => {
+            count--;
+            console.log(count);
+            render();
+        });
+        increaseBtn.addEventListener("click", e => {
+            count++;
+            console.log(count);
+            render()
+        });
+
+        render();
+
+    </script>
+</body>
+
+</html>
