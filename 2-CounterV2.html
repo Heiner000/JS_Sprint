@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: slategray;
+            color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            align-self: center;
+            margin: 1rem
+        }
+
+        .container {
+            margin: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: .5rem;
+            margin: 0 .5rem;
+            border-radius: 6px;
+            width: 10%;
+        }
+
+        #countDisplay {
+            margin: 1rem;
+            padding: 1rem;
+            font-size: 2rem;
+            display: flex;
+            background-color: black;
+            border-radius: 6px;
+            min-width: 10%;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Counter v2</h1>
+    <main>
+        <div class="container">
+            <button id="decreaseBtn">Subtract</button>
+            <p id="countDisplay"></p>
+            <button id="increaseBtn">Add</button>
+        </div>
+        <div class="container">
+            <button id="resetBtn">Reset</button>
+        </div>
+    </main>
+
+    <script>
+        console.log("Hello Counters, let's count.")
+
+        let count = 0;
+        const decreaseBtn = document.querySelector("#decreaseBtn");
+        const increaseBtn = document.querySelector("#increaseBtn");
+        const countDisplay = document.querySelector("#countDisplay");
+        const resetBtn = document.querySelector("#resetBtn");
+
+        function render() {
+            countDisplay.textContent = count;
+            console.log(count);
+        }
+
+        decreaseBtn.addEventListener("click", () => {
+            if (count > 0) {
+                count--;
+                render();
+            }
+        })
+
+        increaseBtn.addEventListener("click", () => {
+            count++;
+            render()
+        })
+
+        resetBtn.addEventListener("click", () => {
+            count = 0;
+            render();
+        })
+
+        render();
+    </script>
+
+</body>
+
+</html>
