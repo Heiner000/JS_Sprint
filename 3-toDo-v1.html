@@ -13,48 +13,156 @@
         }
 
         body {
-            background: black;
-            color: white;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #0f172a, #e5e7eb);
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(31, 41, 55, 0.95);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .app-header {
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .todo-form {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .todo-form input {
+            flex: 1;
+            padding: 0.9rem 1rem;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            background: #0f172a;
+            color: #f8fafc;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .todo-form input:focus {
+            border-color: #2dd4bf;
+            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+        }
+
+        .todo-form button {
+            border: none;
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            background: #2dd4bf;
+            color: #0f172a;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .todo-form button:hover {
+            transform: translateY(-1px);
+            opacity: .95;
+        }
+
+        .todo-section h2 {
+            font-size: 1rem;
+            margin-bottom: .75 rem;
+            color: #cbd5e1;
+        }
+
+        #taskList {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+        }
+
+        #taskList li {
+            background: #111827;
+            border: 1px solid #263244;
+            border-radius: 12px;
+            padding: 0.9rem 1rem;
+            color: #f8fafc;
+        }
+
+        .sr-only {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
         }
     </style>
 </head>
 
 <body>
-    <h1>To Do App</h1>
-    <p class="subtitle">Turn your honey-do's into honey-done's</p>
+    <main class="app">
+        <header>
+            <h1 class="app-header">To Do App</h1>
+            <p class="subtitle">Turn your honey-do's into honey-done's</p>
+        </header>
 
-    <form>
-        <label for="todoInput">New Task:</label>
-        <input type="text" name="todoInput" id="todoInput" placeholder="what else?">
-        <button type="submit" id="addTodoBtn">Add Task</button>
-    </form>
-    <section>
-        <h2>Task List</h2>
-        <ul id="taskList">
-        </ul>
-    </section>
-
+        <form id="todoForm" class="todo-form">
+            <label for="todoInput" class="sr-only">New Task:</label>
+            <input type="text" name="todoInput" id="todoInput" placeholder="what else needs doing...?">
+            <button type="submit" id="addTodoBtn">Add Task</button>
+        </form>
+        <section class="todo-section">
+            <h2>Task List</h2>
+            <ul id="taskList">
+            </ul>
+        </section>
+    </main>
     <script>
-        console.log("we're ready to do some to-dos.")
+        console.log("we're ready to list some to-dos.")
 
         let todos = []
         const taskList = document.querySelector("#taskList");
         const addTodoBtn = document.querySelector("#addTodoBtn");
-        const todoInput = document.querySelector("#todoInput").value;
+        const todoInput = document.querySelector("#todoInput");
+        const todoForm = document.querySelector("#todoForm");
 
-        addTodoBtn.addEventListener("click", () => {
-            todos.push(todoInput);
-            console.log(`todo Input: ${todoInput}`)
-            render();
+        todoForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const userInput = todoInput.value;
+
+            if (userInput.trim() !== "") {
+                todos.push(userInput);
+                console.log("Updated todos Array: ", todos);
+                render()
+                todoForm.reset()
+            }
         })
 
+
         function render() {
-            console.log(todos);
-            while (todos.length > 0) {
-                todos.forEach(task => {
-                    taskList.appendChild("li");
-                });
-            }
+
         }
 
         render();
