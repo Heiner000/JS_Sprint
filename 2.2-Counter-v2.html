@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter v2.2</title>
+    <style>
+        :root {}
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1>Counter v2.2</h1>
+            <p>More practice</p>
+        </section>
+        <section>
+            <button class="subBtn">Subtract</button>
+            <div class="countDisplay">0</div>
+            <button class="addBtn">Add</button>
+        </section>
+        <section>
+            <button class="resetBtn">Reset</button>
+        </section>
+    </main>
+
+    <script>
+        let count = 0;
+        const subBtn = document.querySelector(".subBtn");
+        const countDisplay = document.querySelector(".countDisplay");
+        const addBtn = document.querySelector(".addBtn");
+        const resetBtn = document.querySelector(".resetBtn")
+
+        subBtn.addEventListener("click", () => {
+            count--;
+            render();
+        });
+
+        addBtn.addEventListener("click", () => {
+            count++;
+            render();
+        })
+
+        resetBtn.addEventListener("click", () => {
+            count = 0;
+            render();
+        })
+
+        function render() {
+            countDisplay.textContent = count;
+            console.log(count)
+        }
+
+        render();
+    </script>
+</body>
+
+</html>

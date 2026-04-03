@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To Do App</h1>
+    <p class="subtitle">Turn your honey-do's into honey-done's</p>
+
+    <form>
+        <label for="todoInput">New Task:</label>
+        <input type="text" name="todoInput" id="todoInput" placeholder="what else?">
+        <button type="submit" id="addTodoBtn">Add Task</button>
+    </form>
+    <section>
+        <h2>Task List</h2>
+        <ul id="taskList">
+        </ul>
+    </section>
+
+    <script>
+        console.log("we're ready to do some to-dos.")
+
+        let todos = []
+        const taskList = document.querySelector("#taskList");
+        const addTodoBtn = document.querySelector("#addTodoBtn");
+        const todoInput = document.querySelector("#todoInput").value;
+
+        addTodoBtn.addEventListener("click", () => {
+            todos.push(todoInput);
+            console.log(`todo Input: ${todoInput}`)
+            render();
+        })
+
+        function render() {
+            console.log(todos);
+            while (todos.length > 0) {
+                todos.forEach(task => {
+                    taskList.appendChild("li");
+                });
+            }
+        }
+
+        render();
+
+    </script>
+
+</body>
+
+</html>
