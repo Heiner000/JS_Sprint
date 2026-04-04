@@ -15,7 +15,7 @@
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(180deg, #0f172a, #e5e7eb);
+            background: linear-gradient(180deg, #0f172a, #1e293b);
             color: #e5e7eb;
             display: flex;
             justify-content: center;
@@ -88,7 +88,7 @@
 
         .todo-section h2 {
             font-size: 1rem;
-            margin-bottom: .75 rem;
+            margin-bottom: .75rem;
             color: #cbd5e1;
         }
 
@@ -118,6 +118,28 @@
             align-items: center;
             gap: 1rem;
         }
+
+        .todo-item span {
+            flex: 1;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .todo-item button {
+            border: none;
+            border-radius: 10px;
+            padding: .45rem .7rem;
+            background: #7f1d1d;
+            color: #fecaca;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+
+        .todo-item button:hover {
+            background: #991b1b;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 
@@ -140,11 +162,10 @@
         </section>
     </main>
     <script>
-        console.log("we're ready to list some to-dos.")
+        // console.log("we're ready to list some to-dos.")
 
         let todos = []
         const taskList = document.querySelector("#taskList");
-        const addTodoBtn = document.querySelector("#addTodoBtn");
         const todoInput = document.querySelector("#todoInput");
         const todoForm = document.querySelector("#todoForm");
 
@@ -154,7 +175,7 @@
 
             if (userInput.trim() !== "") {
                 todos.push(userInput);
-                console.log("Updated todos Array: ", todos);
+                // console.log("Updated todos Array: ", todos);
                 render()
                 todoForm.reset()
             }
@@ -162,8 +183,34 @@
 
 
         function render() {
+            taskList.innerHTML = "";
+            todos.forEach(task => {
+                let li = document.createElement("li");
+                let row = document.createElement("div");
+                let text = document.createElement("span");
+                let deleteBtn = document.createElement("button");
 
+                row.className = "todo-item";
+                text.textContent = task;
+                deleteBtn.textContent = "X";
+
+                row.appendChild(text);
+                row.appendChild(deleteBtn);
+                li.appendChild(row);
+                taskList.appendChild(li);
+
+
+                deleteBtn.addEventListener("click", () => {
+                    // console.log("delete that thang: ", task);
+                    // console.log(todos.indexOf(task));
+                    const taskIndex = todos.indexOf(task);
+                    todos.splice(taskIndex, 1)
+                    // console.log("Deleted? ", todos);
+                    render();
+                })
+            });
         }
+
 
         render();
 
