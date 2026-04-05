@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Questions Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="app game">
+        <header class="game-header">
+            <p class="eyebrow">Day 5 Project</p>
+            <h1>20 Questions</h1>
+            <p class="subtitle">Think of an animal. I'll try to narrow it down in 20 quetions.</p>
+        </header>
+
+        <section class="status-panel">
+            <div class="status-card">
+                <span class="status-label">Questions Left</span>
+                <span class="status-value">20</span>
+            </div>
+
+            <div class="status-card">
+                <span class="status-label">Current Category</span>
+                <span class="status-value">Animals</span>
+            </div>
+        </section>
+
+        <section class="questions-panel">
+            <h2>Current Quetion</h2>
+            <div class="question-card">
+                <p class="question-text">Is it a mammal?</p>
+            </div>
+        </section>
+
+        <section class="answer-panel">
+            <h2>Your Answer</h2>
+            <div class="answer-grid">
+                <button class="btn btn-primary">Yes</button>
+                <button class="btn btn-secondary">No</button>
+                <button class="btn btn-ghost">Maybe</button>
+                <button class="btn btn-ghost">Unknown</button>
+            </div>
+        </section>
+
+        <section class="transcript-panel">
+            <div class="row section-heading">
+                <h2>Transcript</h2>
+                <button class="btn btn-danger btn-sm">Reset Game</button>
+            </div>
+
+            <ul class="list transcript-list">
+                <li class="list-item transcript-entry">
+                    <span class="entry-number">1.</span>
+                    <div class="entry-content">
+                        <p class="entry-question">Is it a mammal?</p>
+                        <p class="entry-answer">Answer: Yes</p>
+                    </div>
+                </li>
+
+                <li class="list-item transcript-entry">
+                    <span class="entry-number">2.</span>
+                    <div class="entry-content">
+                        <p class="entry-question">Does it usually live in water?</p>
+                        <p class="entry-answer">Answer: No</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="result-panel hidden">
+            <h2>Guess</h2>
+            <div class="result-card">
+                <p>I think it's a dog.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

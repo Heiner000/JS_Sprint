@@ -1,0 +1,230 @@
+CSS Starter Template
+
+:root {
+    /* ===== COLORS ===== */
+    --bg: #0b0f14;
+    --card: #121821;
+    --surface: #1a2330;
+    --text: #f5f7fa;
+    --muted: #a9b4c2;
+    --border: #2b3645;
+
+    --accent: #4cc9f0;
+    --accent-hover: #72dbf7;
+
+    --danger: #ff6b6b;
+    --success: #4ade80;
+    --warning: #fbbf24;
+
+    /* ===== RADIUS ===== */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* ===== SPACING ===== */
+    --space-1: 0.5rem;
+    --space-2: 0.75rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+
+    /* ===== SHADOWS ===== */
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+    /* ===== TRANSITIONS ===== */
+    --transition-fast: 0.15s ease;
+    --transition-med: 0.25s ease;
+}
+
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+/* ===== BASE ===== */
+body {
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(180deg, var(--bg), #111827);
+    color: var(--text);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--space-5);
+}
+
+/* ===== LAYOUT ===== */
+.app {
+    width: 100%;
+    max-width: 640px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    padding: var(--space-5);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-1);
+}
+
+h2 {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* ===== FORM ===== */
+.form-row {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.input {
+    flex: 1;
+    padding: 0.9rem 1rem;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    color: var(--text);
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
+
+.input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.18);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0.9rem 1.1rem;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: transform var(--transition-fast),
+                background var(--transition-fast),
+                opacity var(--transition-fast);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: rgba(255, 107, 107, 0.12);
+    color: var(--danger);
+    border: 1px solid transparent;
+}
+
+.btn-danger:hover {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: rgba(255, 107, 107, 0.35);
+    transform: translateY(-1px);
+}
+
+/* ===== LISTS / CARDS ===== */
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.list-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    padding: 0.9rem 1rem;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.row-text {
+    flex: 1;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+/* ===== UTILITIES ===== */
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+    body {
+        padding: var(--space-3);
+    }
+
+    .app {
+        padding: var(--space-4);
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .row {
+        align-items: flex-start;
+    }
+}
