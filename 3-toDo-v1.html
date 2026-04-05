@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do App</title>
     <style>
+        :root {
+            --bg: #0b0f14;
+            --card: #121821;
+            --surface: #1a2330;
+            --text: #f5f7fa;
+            --muted: #a9b4c2;
+            --border: #2b3645;
+            --accent: #4cc9f0;
+            --accent-hover: #72dbf7;
+            --danger: #ff6b6b;
+
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+            --space-1: 0.5rem;
+            --space-2: 0.75rem;
+            --space-3: 1rem;
+            --space-4: 1.5rem;
+            --space-5: 2rem;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,108 +39,113 @@
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(180deg, #0f172a, #1e293b);
-            color: #e5e7eb;
+            background: linear-gradient(180deg, var(--bg), #111827);
+            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: var(--space-5);
+        }
+
+        button,
+        input {
+            font: inherit;
         }
 
         .app {
             width: 100%;
             max-width: 600px;
-            background: rgba(31, 41, 55, 0.95);
-            border: 1px solid rgba(255, 255, 255, .08);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            box-shadow: var(--shadow-lg);
+        }
+
+        header {
+            margin-bottom: var(--space-4);
         }
 
         .app-header {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-1);
         }
 
         h1 {
             font-size: 2rem;
-            margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
         }
 
         .subtitle {
-            color: #94a3b8;
+            color: var(--muted);
             font-size: 0.95rem;
         }
 
         .todo-form {
             display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
         }
 
         .todo-form input {
             flex: 1;
             padding: 0.9rem 1rem;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            background: #0f172a;
-            color: #f8fafc;
-            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+            color: var(--text);
             outline: none;
         }
 
+        .todo-form input::placeholder {
+            color: var(--muted);
+        }
+
         .todo-form input:focus {
-            border-color: #2dd4bf;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
         }
 
         .todo-form button {
             border: none;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             padding: 0.9rem 1.1rem;
-            background: #2dd4bf;
-            color: #0f172a;
+            background: var(--accent);
+            color: var(--bg);
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.15s ease, opacity 0.15s ease;
+            transition: background 0.15s ease, transform 0.15s ease;
         }
 
         .todo-form button:hover {
+            background: var(--accent-hover);
             transform: translateY(-1px);
-            opacity: .95;
         }
 
         .todo-section h2 {
             font-size: 1rem;
-            margin-bottom: .75rem;
-            color: #cbd5e1;
+            margin-bottom: var(--space-2);
+            color: var(--muted);
         }
 
         #taskList {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: .75rem;
+            gap: var(--space-2);
         }
 
         #taskList li {
-            background: #111827;
-            border: 1px solid #263244;
-            border-radius: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
             padding: 0.9rem 1rem;
-            color: #f8fafc;
-        }
-
-        .sr-only {
-            position: absolute;
-            left: -9999px;
         }
 
         .todo-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            gap: var(--space-3);
         }
 
         .todo-item span {
@@ -126,19 +155,47 @@
         }
 
         .todo-item button {
-            border: none;
-            border-radius: 10px;
+            border: 1px solid transparent;
+            border-radius: var(--radius-sm);
             padding: .45rem .7rem;
-            background: #7f1d1d;
-            color: #fecaca;
+            background: rgba(255, 107, 107, 0.12);
+            color: var(--danger);
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.15s ease, transform 0.15s ease;
+            transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
         }
 
         .todo-item button:hover {
-            background: #991b1b;
+            background: rgba(255, 107, 107, 0.2);
+            border-color: rgba(255, 107, 107, 0.35);
             transform: translateY(-1px);
+        }
+
+        .sr-only {
+            position: absolute;
+            left: -9999px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: var(--space-3);
+            }
+
+            .app {
+                padding: var(--space-4);
+            }
+
+            .todo-form {
+                flex-direction: column;
+            }
+
+            .todo-form button {
+                width: 100%;
+            }
+
+            .todo-item {
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -171,9 +228,9 @@
 
         todoForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            const userInput = todoInput.value;
+            const userInput = todoInput.value.trim();
 
-            if (userInput.trim() !== "") {
+            if (userInput !== "") {
                 todos.push(userInput);
                 // console.log("Updated todos Array: ", todos);
                 render()
@@ -184,15 +241,21 @@
 
         function render() {
             taskList.innerHTML = "";
-            todos.forEach(task => {
-                let li = document.createElement("li");
-                let row = document.createElement("div");
-                let text = document.createElement("span");
-                let deleteBtn = document.createElement("button");
+
+            todos.forEach((task, index) => {
+                const li = document.createElement("li");
+                const row = document.createElement("div");
+                const text = document.createElement("span");
+                const deleteBtn = document.createElement("button");
 
                 row.className = "todo-item";
                 text.textContent = task;
-                deleteBtn.textContent = "X";
+                deleteBtn.textContent = "Remove";
+
+                deleteBtn.addEventListener("click", () => {
+                    todos.splice(index, 1)
+                    render();
+                })
 
                 row.appendChild(text);
                 row.appendChild(deleteBtn);
@@ -200,14 +263,6 @@
                 taskList.appendChild(li);
 
 
-                deleteBtn.addEventListener("click", () => {
-                    // console.log("delete that thang: ", task);
-                    // console.log(todos.indexOf(task));
-                    const taskIndex = todos.indexOf(task);
-                    todos.splice(taskIndex, 1)
-                    // console.log("Deleted? ", todos);
-                    render();
-                })
             });
         }
 
